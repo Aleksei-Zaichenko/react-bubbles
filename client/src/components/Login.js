@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {axiosWithAuth} from '../utils/axiosWithauth';
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 
 const Login = props => {
   // make a post request to retrieve a token from the api
@@ -11,7 +11,7 @@ const Login = props => {
     e.preventDefault();
 
     axiosWithAuth()
-      .post('/api/login',credentials)
+      .post('/login',credentials)
       .then(res => {
         localStorage.setItem('token', JSON.stringify(res.data.payload));
         props.history.push('/bubbles')
@@ -21,7 +21,7 @@ const Login = props => {
 
   const handleChanges = e => {
     setCredentials({
-     ... credentials,
+     ...credentials,
      [e.target.name]: e.target.value
     });
   };
